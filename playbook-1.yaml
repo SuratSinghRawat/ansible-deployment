@@ -1,15 +1,17 @@
 ---
 - hosts: webservers
   become: true
-  become_user: root
+  become_user: surat
   tasks:
-  - name: install httpd
-    yum: name=httpd state=present
-  - name: start httpd
-    service: name=httpd state=started
+  - name: Install apache2
+    apt:
+      name: apache2
+      state: present
+  - name: Start apache2
+    service:
+      name: apache2
+      state: started 
+      enabled: yes
   - name: deploy html file
-    copy: src=index.html dest=/var/www/html
-    notify: restart httpd
-  handlers:
-  - name: restart httpd
-    service: name=httpd state=restarted
+    copy: src=index.html dest=/var/www/html/
+    
