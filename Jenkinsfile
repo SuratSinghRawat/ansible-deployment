@@ -18,7 +18,12 @@ pipeline
                 unstash(name: 'git-clone')
                 sh 'ls'
             }
-
+        }
+        stage('Ansible playbook')
+        {
+            steps{
+                ansiblePlaybook become: true, becomeUser: 'surat', credentialsId: 'gcp-ansiblehost', disableHostKeyChecking: true, installation: 'ansible', inventory: 'dev.inv', playbook: 'playbook-1.yaml', vaultTmpPath: ''
+            }
         }
     }
 }
