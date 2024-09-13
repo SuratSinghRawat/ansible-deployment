@@ -21,6 +21,7 @@ pipeline
         }
         stage('Ansible playbook')
         {
+            agent{label 'ansible'}
             steps{
                 ansiblePlaybook become: true, becomeUser: 'surat', credentialsId: 'gcp-ansiblehost', disableHostKeyChecking: true, installation: 'ansible', inventory: 'dev.inv', playbook: 'playbook-1.yaml', vaultTmpPath: ''
             }
