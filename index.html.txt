@@ -1,0 +1,6 @@
+<h1> This file is from ansible git-jenkins </h1>
+<h1> created by Surat Singh Rawat </h1>
+<h1> File for playbook execution from jenkins</h1>
+<h1>Deploying on 13-Sep-2024 </h1>
+<h1> making chnages for continous Deployment </h1>
+Using Jenkins and Ansible :) !!!!
