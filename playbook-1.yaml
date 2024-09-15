@@ -1,17 +1,20 @@
 ---
 - hosts: webservers
   become: true
-  become_user: surat
+  #become_user: surat
   tasks:
-  - name: Install apache2
-    apt:
-      name: apache2
-      state: present
-  - name: Start apache2
-    service:
-      name: apache2
-      state: started 
-      enabled: yes
-  - name: deploy html file
-    copy: src=index.html dest=/var/www/html/
+    - name: Update apt package cache
+      apt:
+        update_cache: yes
+      #become: true this is if we want spefic task should run as a root
+    - name: Install Apache
+      apt:
+        name: apache2
+        state: present
+    - name: Start Apache service
+      service:
+        name: apache2
+        state: started
+    - name: deploy html file
+      copy: src=/usr/ansible/workspace/Devops-Project-1_Ansible/index.html dest=/var/www/html/
     
