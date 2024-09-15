@@ -6,7 +6,8 @@
     - name: Update apt package cache
       apt:
         update_cache: yes
-      #become: true this is if we want spefic task should run as a root
+      become: true 
+      #this is if we want spefic task should run as a root
     - name: Install Apache
       apt:
         name: apache2
